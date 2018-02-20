@@ -11,6 +11,7 @@ public class GoogleStep extends Steps{
  public WebDriver driver;
     @BeforeScenario
     public void scenarioSetup() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
     }
  @Given("web $parameter")
