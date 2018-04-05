@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="webDriverProvider" class="Steps.configuration.ConfigurationWebDriverSteps">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <bean id="screenshotOnFailureDriver" class="org.jbehave.web.selenium.WebDriverScreenshotOnFailure">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <bean id="pageDumpOnFailureDriver" class="org.jbehave.web.selenium.WebDriverPageDumpOnFailure">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <bean id="splunkformat" class="pl.ing.CORE.reporter.SplunkFormat">
+        <constructor-arg ref="driverProvider"/>
+    </bean>
+
+    <import resource="steps.xml"/>
+
+    <!-- custom steps -->
+    <import resource="pl/ing/CIB/gr6/custom-steps.xml"/>
+</beans>
